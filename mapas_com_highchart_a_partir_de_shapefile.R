@@ -6,7 +6,7 @@ library(spdplyr)
 library(geojsonio)
 library(rmapshaper)
 # baixar shapefile
-county <- readOGR(dsn = "Z:/CGAPP/Equipe/Capacitação/Base de dados/mapas", layer = "municipios_2010", verbose = FALSE)
+county <- readOGR(dsn = "~/mapas", layer = "municipios_2010", verbose = FALSE)
 
 # manipulando bases com spdplyr
 county_id =  county %>% mutate(id2 = as.character(id))
