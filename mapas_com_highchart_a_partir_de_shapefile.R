@@ -50,7 +50,7 @@ highchart() %>%
                     borderColor = "#FAFAFA",
                     borderWidth = 0.1) %>% 
   hc_title(text = "Brasil - população municipal") %>%
-  hc_colorAxis(dataClasses = color_classes(c(0, 15000, 50000, 100000, 1000000, Inf))) %>% 
+  hc_colorAxis(dataClasses = color_classes(c(0, 15000, 50000, 100000, 1000000, 15000000))) %>% 
   hc_legend(layout = "vertical", align = "right", valueDecimals = 0) 
 
   
