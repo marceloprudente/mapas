@@ -5,8 +5,12 @@ library(rgdal)
 library(spdplyr)
 library(geojsonio)
 library(rmapshaper)
+library(highcharter)
+library(tidyverse)
+library(magrittr)
 # baixar shapefile
-county <- readOGR(dsn = "~/mapas", layer = "municipios_2010", verbose = FALSE)
+county <- readOGR(dsn = path.expand("~/mapas/dados/mun"), layer = "municipios_2010", 
+                  verbose = FALSE)
 
 # manipulando bases com spdplyr
 county_id =  county %>% mutate(id2 = as.character(id))
@@ -29,7 +33,7 @@ se_list <- geojsonio::geojson_list(se_map)
 se <- as.data.frame(se_map) %>% 
   mutate_all(as.character) %>% 
   mutate_at(vars(populacao, pib), as.numeric) %>% 
-  mutate(pop_faixas = cut(populacao,c(0, 15000, 50000, 100000, 1000000, Inf),
+  mutate(pop_faixas = cut(populacao,c(0, 15000, 50000, 100000, 1000000, 1500000),
                           labels = c("Até 15k", "Entre 15k e 50k",
                                      "Entre 50k e 100k", "Entre 100k e 1m",
                                      "Acima de 1m")))
